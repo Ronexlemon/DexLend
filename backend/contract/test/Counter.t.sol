@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
+// forge create  --rpc-url  https://rpc.testnet.mantle.xyz    --private-key <>  src/dexLend.sol:DexLending
+// Deployed to: 0x867dB100F166853194c4e93cA40d512f303694c3
+// Transaction hash: 0x7c68e545f158bcf9d8665f510762d8266c3996a3d04833eb901be87641612686
 
 import "forge-std/Test.sol";
 import "../src/Counter.sol";

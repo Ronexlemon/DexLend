@@ -5,8 +5,8 @@ pragma solidity ^0.8.13;
 // Transaction hash: 0x7c68e545f158bcf9d8665f510762d8266c3996a3d04833eb901be87641612686
 
 //usdc Faucet
-// Deployed to: 0xC75328d514e79fb263A7991369c951717E113e37
-// Transaction hash: 0x12fa69ddf927eb11db5f2cbc04144cc977d4e787a167f9845c6db7a1263f0d2e
+// Deployed to: 0xDca630441b097813f16ef7626Ed821610aEb9747
+// Transaction hash: 0x328dea3bf0f2feee7d5391ef68269cc21662c6a97c96600f2dc2d8a5c54e1d7b
 
 import "forge-std/Test.sol";
 import "../src/Counter.sol";

@@ -14,7 +14,7 @@ contract USDCFaucet is ERC20 {
     constructor() ERC20("USDC", "USDC") {}
 
     function mintTokens(address user, uint amount) public {
-        require(amount > 1000 ether, "can only mint 1000");
+        require(amount <= 1000 ether, "can only mint 1000");
         require(timeWaitToMint[user] < block.timestamp, "need to wait");
         timeWaitToMint[user] = block.timestamp + time_toMintNext;
 

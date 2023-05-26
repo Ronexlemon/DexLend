@@ -7,6 +7,7 @@ import LandingPage from './Pages/LandingPage'
 import DashBoard from './Pages/Dashboard'
 import Liquidate from './Pages/Liquidate'
 import HomePage from './Pages/Home'
+import FaucetPage from './Pages/Faucet'
 
 import '@rainbow-me/rainbowkit/styles.css';
 
@@ -57,6 +58,7 @@ function App() {
         <Route element={<LandingPage/>} path='/market'/>
         <Route element={<DashBoard/>} path='/repay'/>
         <Route element={<Liquidate/>} path='/liquidate'/>
+        <Route element={<FaucetPage/>} path='/faucet'/>
       </Routes>
     </Router>
    

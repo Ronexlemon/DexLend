@@ -8,6 +8,7 @@ import DashBoard from './Pages/Dashboard'
 import Liquidate from './Pages/Liquidate'
 import HomePage from './Pages/Home'
 import FaucetPage from './Pages/Faucet'
+import { mantle } from './ContractAddress/mantleNetwork'
 
 import '@rainbow-me/rainbowkit/styles.css';
 
@@ -21,11 +22,16 @@ import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { polygonMumbai } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 const { chains, publicClient } = configureChains(
-  [polygonMumbai],
+  [mantle],
   [
     // alchemyProvider({ apiKey: "ronex" }),
-    publicProvider()
+    // publicProvider()
+    jsonRpcProvider({
+      rpc:chain=>({http:chain.rpcUrls.default.http[0]})
+
+    })
   ]
 );
 

@@ -1,2 +1,2 @@
-export const LendingYieldContract  ="0x867dB100F166853194c4e93cA40d512f303694c3"
-export const UsdcFaucetContract = "0xC75328d514e79fb263A7991369c951717E113e37"
+export const LendingYieldContract  ="0xC4d0D44a4475D545680ec1883B57BeA6e7e6Fb0e"
+export const UsdcFaucetContract = "0x4DA4d8820eaf1a0D06B27EfCE348e24cD5926243" //"0x10F2DA7A73Efa54f97Cea89eC4C59c25855Bd95d" //"0xC75328d514e79fb263A7991369c951717E113e37"

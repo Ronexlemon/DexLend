@@ -18,11 +18,11 @@ const RequestCard = () => {
   const [tokenAmount,setTokenAmount] = useState();
   const [collateralAmount,setCollateralAmount] = useState();
   const [interestAmount,setInterestAmount] = useState();
-  const matic = "0x0000000000000000000000000000000000001010";
-  const maticPricefeed = "0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada"
-  const link = "0x326C977E6efc84E512bB9C30f76E30c160eD06FB"
-  const linkPriceFeed = "0x1C2252aeeD50e0c9B64bDfF2735Ee3C932F5C408"
-  const usdcPriceFeed = "0x572dDec9087154dC5dfBB1546Bb62713147e0Ab0"
+  const bit = "0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000";
+  const bitPricefeed = "0xfa0DA106198bc4343BDE38fA9A9021099beEa8FD"
+  const usdc = "0x4DA4d8820eaf1a0D06B27EfCE348e24cD5926243"
+  const usdcPriceFeed = "0xa7D0182A131818226FeC7303331C82FEe5cd18D3"
+  //const usdcPriceFeed = "0x572dDec9087154dC5dfBB1546Bb62713147e0Ab0"
   //
   //approve matic to loan out
   const {
@@ -30,7 +30,7 @@ const RequestCard = () => {
     writeAsync: approveloan
     
   } = useContractWrite({
-    address:link,//its usdc
+    address:usdc,//its usdc
     abi:IERC20,
     functionName: "approve",
     args: [LendingYieldContract,loanamount]
@@ -72,7 +72,7 @@ const RequestCard = () => {
     writeAsync: approveCollateral
     
   } = useContractWrite({
-    address:link,
+    address:usdc,
     abi:IERC20,
     functionName: "approve",
     args: [LendingYieldContract,collateralAmount]
@@ -95,7 +95,7 @@ const RequestCard = () => {
     address:LendingYieldContract,
     abi:LendingAbi,
     functionName: "allowToken",
-    args: [matic,maticPricefeed]
+    args: [bit,bitPricefeed]
   })
   const {
         
@@ -105,7 +105,7 @@ const RequestCard = () => {
     address:LendingYieldContract,
     abi:LendingAbi,
     functionName: "allowCollateralToken",
-    args: [link,linkPriceFeed]
+    args: [usdc,usdcPriceFeed]
   })
   const allowToken = async()=>{
     try{
@@ -124,7 +124,7 @@ const RequestCard = () => {
     address:LendingYieldContract,
     abi:LendingAbi,
     functionName: "createRequest",
-    args: [duration,tokenAmount,collateralAmount,matic,link,interestAmount],
+    args: [duration,tokenAmount,collateralAmount,bit,usdc,interestAmount],
    
   })
   const createRequests = async()=>{
@@ -161,17 +161,17 @@ const RequestCard = () => {
   };  
   
 
-  const [selectedOptionCollateral, setSelectedOptionCollateral] = useState('LINK'); // Initialize the state with an empty string
+  const [selectedOptionCollateral, setSelectedOptionCollateral] = useState('USDC'); // Initialize the state with an empty string
 
   const handleOptionChangeCollateral = (event) => {
     setSelectedOptionCollateral(event.target.value); // Update the state with the selected option value
   };
-  const [selectedOptionToken, setSelectedOptionToken] = useState('MATIC'); // Initialize the state with an empty string
+  const [selectedOptionToken, setSelectedOptionToken] = useState('BIT'); // Initialize the state with an empty string
 
   const handleOptionChangeToken = (event) => {
     setSelectedOptionToken(event.target.value); // Update the state with the selected option value
   };
-  const [selectedOptionInterest, setSelectedOptionInterest] = useState('MATIC'); // Initialize the state with an empty string
+  const [selectedOptionInterest, setSelectedOptionInterest] = useState('BIT'); // Initialize the state with an empty string
 
   const handleOptionChangeInterest = (event) => {
     setSelectedOptionInterest(event.target.value); // Update the state with the selected option value
@@ -283,9 +283,9 @@ setTimeout(() => {
               key={index}
               className="bg-gray-700  grid grid-cols-6 pl-10 gap-0 mt-4 rounded h-10 items-center"
             >
-              <p ><span className="text-green-300">MATIC</span>: {Number(element.tokenAmountToBorrow)/10**18} </p>
-              <p className="pl-10"><span className="text-blue-300">LINK</span>: {Number(element.collateralAmount)/10**18}</p>
-              <p className="pl-10"><span className="text-blue-300">MATIC</span> :{Number(element.interest
+              <p ><span className="text-green-300">BIT</span>: {Number(element.tokenAmountToBorrow)/10**18} </p>
+              <p className="pl-10"><span className="text-blue-300">USDC</span>: {Number(element.collateralAmount)/10**18}</p>
+              <p className="pl-10"><span className="text-blue-300">BIT</span> :{Number(element.interest
 )/10**18}</p>
               <p className="pl-10"> {convertSecondsToDHMS( Number(element.duration   )-currentTimeInSeconds()).days } days: {convertSecondsToDHMS( Number(element.duration   )-currentTimeInSeconds()).hours } hours</p>
               <p className="pl-12">{!element.lended? <h2 className="text-green-400">Requested</h2>:<h2 className="text-red-400">Lended</h2>}</p>
@@ -303,7 +303,7 @@ setTimeout(() => {
           <div className="grid grid-cols-3 gap-2 items-center">
             <span>Loan</span>
             <select value={selectedOptionToken} onChange={handleOptionChangeToken}>
-        <option value="MATIC">MATIC</option>
+        <option value="BIT">BIT</option>
         <option value="USDC">USDC</option>
       </select>
             <input placeholder="amount" className="border border-gray-400 text-center w-28" type="text" onChange={(e)=>{setTokenAmount( ethers.parseEther(e.target.value))}}/>
@@ -313,16 +313,16 @@ setTimeout(() => {
           <div className="grid grid-cols-3 gap-2 items-center">
             <span className="">Collateral</span>
             <select value={selectedOptionCollateral} onChange={handleOptionChangeCollateral}>
-        <option value="LINK">LINK</option>
         <option value="USDC">USDC</option>
+        <option value="USDT">USDT</option>
       </select>
             <input placeholder="Amount"  className="border border-gray-400  text-center w-28" type="text" onChange={(e)=>{setCollateralAmount(ethers.parseEther(e.target.value))}}/>
           </div>
           <div className="grid grid-cols-3 gap-2 items-center">
             <span>Interest</span>
             <select value={selectedOptionInterest} onChange={handleOptionChangeInterest}>
-        <option value="MATIC">MATIC</option>
-        <option value="USDC">USDC</option>
+        <option value="BIT">BIT</option>
+        <option value="USDC">USDT</option>
       </select>
             <input placeholder="amount" className="border border-gray-400 text-center w-28" type="text"  onChange={(e)=>{setInterestAmount(ethers.parseEther(e.target.value))}}/>
           </div>

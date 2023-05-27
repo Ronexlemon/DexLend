@@ -232,7 +232,7 @@
 						"type": "uint256"
 					}
 				],
-				"internalType": "struct LendingV2.DashBoard[]",
+				"internalType": "struct DexLending.DashBoard[]",
 				"name": "dash",
 				"type": "tuple[]"
 			}
@@ -297,7 +297,7 @@
 						"type": "bool"
 					}
 				],
-				"internalType": "struct LendingV2.Information[]",
+				"internalType": "struct DexLending.Information[]",
 				"name": "infos",
 				"type": "tuple[]"
 			}
@@ -392,7 +392,7 @@
 						"type": "bool"
 					}
 				],
-				"internalType": "struct LendingV2.Information[]",
+				"internalType": "struct DexLending.Information[]",
 				"name": "infos",
 				"type": "tuple[]"
 			}

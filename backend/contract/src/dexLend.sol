@@ -3,8 +3,8 @@
 pragma solidity ^0.8.2;
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
-//import "./AggregatorV3Interface.sol";
+//import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+import "./AggregatorV3Interface.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
